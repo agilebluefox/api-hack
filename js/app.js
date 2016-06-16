@@ -29,12 +29,10 @@ function renderArticles(articles) {
         byline = article.byline;
         date = article.created_date;
         if (article.multimedia[1].url) {
-            image = article.multimedia[1].url;
+            image = article.multimedia['1']['url'];
         } else {
             image = 'images/default.png';
         }
-
-        console.log(image);
 
 
     });
