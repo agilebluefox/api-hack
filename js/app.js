@@ -28,11 +28,14 @@ function renderArticles(articles) {
         abstract = article.abstract;
         byline = article.byline;
         date = article.created_date;
-        if (article.multimedia[1].url) {
+        try {
             image = article.multimedia['1']['url'];
-        } else {
-            image = 'images/default.png';
+        } catch (e) {
+            if (e instanceof TypeError) {
+                image = 'images/default.png';
+            }
         }
+        console.log(image);
 
 
     });
