@@ -22,7 +22,6 @@ function getNYTNews() {
 function renderArticles(articles) {
     var title, url, abstract, byline, date, image;
     $.each(articles, function(i, article) {
-        console.log(article);
         title = article.title;
         url = article.url;
         abstract = article.abstract;
@@ -35,9 +34,26 @@ function renderArticles(articles) {
                 image = 'images/default.png';
             }
         }
-        console.log(image);
 
+        var result = $('.templates .article').clone();
 
+        var imgElem = result.find('img.thumb');
+        imgElem.attr('src', image);
+        imgElem.attr('alt', title);
+
+        var titleElem = result.find('h2.title');
+        titleElem.text(title);
+
+        var abstractElem = result.find('.abstract');
+        abstractElem.text(abstract);
+
+        var bylineElem = result.find('.byline');
+        bylineElem.text(byline);
+
+        var linkElem = result.find('.link a');
+        linkElem.attr('href', url);
+
+        $('.container').append(result);
     });
 }
 
@@ -65,7 +81,13 @@ function getThreeIndexes(number) {
     var indices = [];
     for (var i = 0; i < 3; i++) {
         var randNum = getRandomInt(0, number);
-        indices.push(randNum);
+        var pos = indices.indexOf(randNum);
+        console.log(pos);
+        if (pos != -1) {
+            continue;
+        } else {
+            indices.push(randNum);
+        }
     }
     return indices;
 }
