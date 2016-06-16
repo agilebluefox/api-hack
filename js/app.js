@@ -4,14 +4,13 @@ function getNYTNews() {
     var url = "https://api.nytimes.com/svc/topstories/v1/";
     url += 'health.json';
     url += '?' + $.param({
-      'api-key': "bec3721eb32743b0a2bb27d97dcf1272"
+      'api-key': secretKey.key
     });
     $.ajax({
       url: url,
       dataType: 'json',
       method: 'GET',
     }).done(function(result) {
-        console.log(result);
         var selectedNews = chooseThreeStories(result);
         renderArticles(selectedNews);
     }).fail(function(err) {
@@ -82,7 +81,6 @@ function getThreeIndexes(number) {
     for (var i = 0; i < 3; i++) {
         var randNum = getRandomInt(0, number);
         var pos = indices.indexOf(randNum);
-        console.log(pos);
         if (pos != -1) {
             continue;
         } else {
