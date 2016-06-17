@@ -8,6 +8,11 @@
 
 div.container {
     text-align: center;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 div.article {
@@ -16,13 +21,28 @@ div.article {
     padding: 10px;
     margin: 5px;
     border: 1px solid rgba(0,0,0,0.6);
+    position: relative;
+}
+
+div.extra {
+    position: absolute;
+    bottom: 0;
+    border-top: 1px solid rgba(102,102,102,0.5);
+    width: 100%;
+    margin-left: -10px;
+    background-color: rgba(153,0,0, 0.7);
+}
+
+div.extra a {
+    color: rgba(255,255,255,1);
 }
 
 .abstract {
     text-align: left;
+    margin-bottom: 4rem;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 999px) {
     div.container {
         width: 100%;
     }
@@ -30,6 +50,14 @@ div.article {
     div.article {
         width: 90%;
         display: block;
-        margin: auto;
+        margin: 1rem auto;
+    }
+
+    div.article:first-child {
+        margin-bottom: 0;
+    }
+
+    div.article:last-child {
+        margin-top: 0;
     }
 }
