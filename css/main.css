@@ -31,10 +31,16 @@ div.extra {
     width: 100%;
     margin-left: -10px;
     background-color: rgba(153,0,0, 0.7);
+    font-size: 1.2rem;
 }
 
 div.extra a {
     color: rgba(255,255,255,1);
+    text-decoration: none;
+}
+
+div.extra a:hover {
+    color: rgba(0,0,0,1);
 }
 
 .abstract {
