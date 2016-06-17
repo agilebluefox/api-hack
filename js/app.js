@@ -1,7 +1,7 @@
 $(document).ready(getNYTNews());
 // Function to make the AJAX request.
 function getNYTNews() {
-    var url = "https://api.nyti";
+    var url = "https://api.nytimes.com/svc/topstories/v1/";
     url += 'health.json';
     url += '?' + $.param({
       'api-key': secretKey.key
