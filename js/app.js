@@ -1,7 +1,7 @@
 $(document).ready(getNYTNews());
 // Function to make the AJAX request.
 function getNYTNews() {
-    var url = "https://api.nytimes.com/svc/topstories/v1/";
+    var url = "https://api.nyti";
     url += 'health.json';
     url += '?' + $.param({
       'api-key': secretKey.key
@@ -15,8 +15,10 @@ function getNYTNews() {
         renderArticles(selectedNews);
     }).fail(function(err) {
         // TODO: Learn about dealing with response errors.
-        console.log(err);
-      throw err;
+        var error = $('.templates .error').clone();
+        error.find('p');
+        $('.container').append(error);
+      // throw err;
     });
 }
 // Function to do the final rendering to the DOM.
