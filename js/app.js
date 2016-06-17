@@ -15,11 +15,13 @@ function getNYTNews() {
         renderArticles(selectedNews);
     }).fail(function(err) {
         // TODO: Learn about dealing with response errors.
+        console.log(err);
       throw err;
     });
 }
 // Function to do the final rendering to the DOM.
 function renderArticles(articles) {
+    console.log(articles);
     var title, url, abstract, byline, date, image;
     $.each(articles, function(i, article) {
         title = article.title;
@@ -28,13 +30,14 @@ function renderArticles(articles) {
         byline = article.byline;
         date = article.created_date;
         // Sometimes the image url isn't available.
-        try {
+        if ((Array.isArray(article.multimedia)) &&
+            (article.multimedia.length > 1) &&
+            (article.multimedia[1].hasOwnProperty('url'))) {
             image = article.multimedia['1']['url'];
-        } catch (e) {
-            if (e instanceof TypeError) {
-                image = 'images/default.png';
-            }
+        } else {
+            image = 'images/default.png';
         }
+
         // Clone the template and fill in the data.
         var result = $('.templates .article').clone();
 
